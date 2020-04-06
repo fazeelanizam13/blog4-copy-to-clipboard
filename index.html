@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Copy to Clipboard</title>
+    <style>
+      .box{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Calibri';
+        font-size: 1em
+      }
+      
+      p{
+        text-align: center;
+        padding: 20px
+      }
+      
+      button{
+        border: none;
+        background-color: darkslategrey;
+        color: white;
+        padding: 20px;
+        font-size: .9em
+      }
+    </style>
+  </head>
+
+  <body style="margin: 0">
+    <div class="box">
+      <p id="text">Text to copy</p>
+      <button id="copyButton" onclick="copyFunction()">Copy</button>
+    </div>
+    
+    <script type="text/javascript">
+      function copyFunction(){
+        let text = document.getElementById('text').innerHTML;
+        let dummy = document.createElement('textarea');
+        dummy.value = text;
+        document.body.appendChild(dummy);
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        alert('"' + text + '"' + ' copied to clipboard');
+      }
+    </script>
+  </body>
+</html>
